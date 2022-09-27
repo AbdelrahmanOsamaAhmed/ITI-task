@@ -1,0 +1,12 @@
+.card{
+    /* margin-left: 3px; */
+    margin-bottom: 5px;
+}
+.card img{
+    height: auto;
+}
+input{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 15px;
+}
