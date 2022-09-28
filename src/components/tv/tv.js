@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SETlang } from "../../store/action"
+import { SETlang } from "../../store/action";
 import "./tv.css";
 export default function Tv() {
   var [show, setShow] = useState([]);
@@ -9,6 +9,7 @@ export default function Tv() {
   var [search, setSearch] = useState("");
   let lang = useSelector((state) => state.lang);
   let dispatch = useDispatch();
+  let apiSearch = `https://api.themoviedb.org/3/search/tv?api_key=c313f39acfc9f5e7de7b99b22cc90878&language=en-US&page=1&include_adult=true&query=${search}`;
 
   useEffect(() => {
     axios
@@ -17,7 +18,7 @@ export default function Tv() {
       )
       .then((data) => setShow(data.data.results))
       .catch((err) => console.log(err));
-  }, [page,lang]);
+  }, [page, lang]);
 
   let toggle = (tvid) => {
     let newTvShows = show.filter((tv) => {
@@ -70,6 +71,7 @@ export default function Tv() {
               placeholder="Search..."
               onChange={(val) => {
                 setSearch(val.target.value);
+                axios.get(apiSearch).then((data) => setShow(data.data.results));
               }}
             />
           </div>
