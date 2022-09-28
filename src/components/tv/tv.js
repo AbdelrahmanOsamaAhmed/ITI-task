@@ -9,7 +9,7 @@ export default function Tv() {
   var [search, setSearch] = useState("");
   let lang = useSelector((state) => state.lang);
   let dispatch = useDispatch();
-  let apiSearch = `https://api.themoviedb.org/3/search/tv?api_key=c313f39acfc9f5e7de7b99b22cc90878&language=en-US&page=1&include_adult=true&query=${search}`;
+  let apiSearch = `https://api.themoviedb.org/3/search/tv?api_key=c313f39acfc9f5e7de7b99b22cc90878&language=en-US&page=1&include_adult=false&query=${search}`;
 
   useEffect(() => {
     axios
